@@ -7,7 +7,7 @@ double *vector_double(int  vd) {
     func_doub = (double*) malloc(vd * sizeof(double));
     for (int i = 0; i < vd; i++)
     {
-        func_doub[i] = i;
+        func_doub[i] = i *1.33;
         printf("&func_doub[%d] = %p, func_doub[%d] = %f\n", i, &func_doub[i], i, func_doub[i]);
     }
     puts("");
