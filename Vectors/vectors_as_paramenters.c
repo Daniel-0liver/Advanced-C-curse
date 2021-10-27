@@ -16,6 +16,11 @@ void	print_vector(int *vs, int n) {
 	puts("");
 }
 
+void	vector_desalocation(int	*v) {
+	free(v);
+	v = NULL;
+}
+
 
 int main() {
 
@@ -52,6 +57,9 @@ int main() {
 	sum_vector_scaling(vc, 5, 9);
 	print_vector(vc, 5);
 
+
+	// Memory desalocation 
+	vector_desalocation(vc);
 
     return 0;
 }
