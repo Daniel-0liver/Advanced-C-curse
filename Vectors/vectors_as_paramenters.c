@@ -57,7 +57,6 @@ int main() {
 	sum_vector_scaling(vc, 5, 9);
 	print_vector(vc, 5);
 
-
 	// Memory desalocation 
 	vector_desalocation(&vc);
 
