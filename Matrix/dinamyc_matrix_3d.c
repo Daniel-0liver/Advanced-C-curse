@@ -44,6 +44,21 @@ int main() {
         puts("");
 	}
     
+    /**********	Memory desalocation 3D matrix dinamyc ************/
+
+	for (int i = 0; i < n_slices; i++)
+	{
+        for (int j = 0; j < n_rows; j++)
+        {
+            free(m[i][j]);
+        }
+		free(m[i]);
+        
+	}
+	free(m);
+	m = NULL;
+
+	/**********************************************************/
 
     return 0;
 

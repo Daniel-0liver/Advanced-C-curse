@@ -33,6 +33,17 @@ int main() {
 		puts("");
 	}
 
+	/**********	Memory desalocation matrix dinamyc ************/
+
+	for (int i = 0; i < n_rows; i++)
+	{
+		free(m[i]);
+	}
+	free(m);
+	m = NULL;
+
+	/**********************************************************/
+
 	return 0;
 	
 }
