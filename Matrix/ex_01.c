@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int **int_matrix(int n_rows, int n_cols) {
+// Create a matrix with x rows and x coluns 
+int **int_matrix(unsigned int n_rows, unsigned int n_cols) {
     int **m = (int **) calloc(n_rows, sizeof(int*));
     int count = 0;
 
@@ -21,7 +22,8 @@ int **int_matrix(int n_rows, int n_cols) {
     return m;
 }
 
-void print_matrix(int **m, int n_rows, int n_cols) {
+// Print all the matrix.
+void print_matrix(const int **m, int n_rows, int n_cols) {
     
     for (int i = 0; i < n_rows; i++)
 	{
@@ -35,6 +37,7 @@ void print_matrix(int **m, int n_rows, int n_cols) {
 	}
 }
 
+// Scaling the matrix.
 void    matrix_scaling(int **m, int n_rows, int n_cols, int	scaling) {
 	for (int i = 0; i < n_rows; i++)
 	{
@@ -45,6 +48,7 @@ void    matrix_scaling(int **m, int n_rows, int n_cols, int	scaling) {
 	}
 }
 
+// Unlock the memory of the matrix.
 void unlock_all_matrix(int ***m, int n_rows, int n_cols) {
     for (int i = 0; i < n_rows; i++)
     {
@@ -67,9 +71,9 @@ int main(int argc, char **argv) {
     int scaling = atoi(argv[3]);
 
     int **m = int_matrix(n_rows, n_cols);
-    print_matrix(m, n_rows, n_cols);
+    print_matrix((const int**)m, n_rows, n_cols);
     matrix_scaling(m, n_rows, n_cols, scaling);
-    print_matrix(m, n_rows, n_cols);   
+    print_matrix((const int**)m, n_rows, n_cols);   
     unlock_all_matrix(&m, n_rows, n_cols);
 
     printf("\nm is free? %d\n", m == NULL);
