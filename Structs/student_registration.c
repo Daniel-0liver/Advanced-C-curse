@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef struct _book
 {
@@ -68,6 +69,17 @@ void destroy_book(Book **ref_book) {
     *ref_book = NULL;
 }
 
+bool is_the_same_title(const Book *book_1, const Book *book_2) {
+    if (strcmp(book_1->title, book_2->title) == 0)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+    
+}
+
 int main() {
 
     Book *book_1 = create_book("Harry", 100, 20.50);
@@ -80,6 +92,27 @@ int main() {
 
     print_student(student_1);
 
+
+    // Is the same book?
+    if (student_1->fav_book == book_2)
+    {
+        puts("TRUE");
+    } else
+    {
+        puts("FALSE");
+    }
+    
+    // Is the same name?
+    puts("\nAre the same names");
+    if (is_the_same_title(student_1->fav_book, book_2))
+    {
+        puts("TRUE");
+    } else
+    {
+        puts("FALSE");
+    }
+    
+    
     destroy_book(&book_1);
     destroy_book(&book_2);
 
