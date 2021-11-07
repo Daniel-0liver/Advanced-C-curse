@@ -55,7 +55,7 @@ void destroy_student(Student **student_ref) {
     Student *student = *student_ref;
     destroy_book(&student->fav_book);
     free(student);
-    student_ref = NULL;
+    *student_ref = NULL;
 }
 
 void print_student(const Student *student) {
@@ -120,8 +120,8 @@ int main() {
 
     destroy_student(&student_1);
 
-    // printf("\n%d\n", book_1 == NULL);
-    // printf("\n%d\n", book_2 == NULL);
+    printf("\n%d\n", student_1 == NULL);
+    printf("\n%d\n", book_2 == NULL);
 
 
     return 0;

@@ -56,13 +56,14 @@ void destroy_book(Book **ref_book) {
     *ref_book = NULL;
 }
 
-void destroy_vector_book(Book ***vec, unsigned int size) {
-    Book **aux = **vec;
+void destroy_vector_book(Book **vec, unsigned int size) {
+    Book *aux = *vec;
     for (int i = 0; i < size; i++)
     {
         destroy_book(&aux[i]);
     }
-
+    free(vec);
+    *vec = NULL;
 
 }
 
@@ -88,8 +89,6 @@ int main() {
     print_all_vector(vec, 3);
 
     destroy_vector_book(&vec, 3);
-
-    print_all_vector(vec, 3);
 
     printf("Is null? %d\n", vec == NULL);
     
