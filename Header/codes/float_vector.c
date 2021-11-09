@@ -33,8 +33,27 @@ void destroy(FloatVector **vec_ref) {
 
 // float get(const FloatVector *vec, int index);
 
-// void append(FloatVector *vec, float val);
+void append(FloatVector *vec, float val) {
+    if (vec->size == vec->capacity) {
+        fprintf(stderr, "ERROR in 'append'\n");
+        fprintf(stderr, "Vector is FULL\n");
+        exit(EXIT_FAILURE);
+    }
+
+    vec->data[vec->size++] = val;
+}
 
 // void set(FloatVector *vec, int index, float val);
 
-// void print(const FloatVector *vec);
+void print(const FloatVector *vec) {
+    puts("------------------------------");
+    printf("Size: %d\n", vec->size);
+    printf("Capacity: %d\n", vec->capacity);
+    puts("---");
+
+    for (int i = 0; i < vec->size; i++) {
+        printf("[%d] = %f\n", i, vec->data[i]);
+    }
+    puts("------------------------------\n");
+    
+}
