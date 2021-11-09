@@ -25,11 +25,21 @@ void destroy(FloatVector **vec_ref) {
     *vec_ref = NULL;
 }
 
-// int size(const FloatVector *vec);
+int size(const FloatVector *vec) {
+    return vec->size;
+}
 
-// int capacity(const FloatVector *vec);
+int capacity(const FloatVector *vec) {
+    return vec->capacity;
+}
 
-// float at(const FloatVector *vec, int index);
+float at(const FloatVector *vec, int index) {
+    if (index < 0 || index >= vec->size) {
+        fprintf(stderr, "ERROR int 'at'\n"):
+        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->)
+    }
+    
+}
 
 // float get(const FloatVector *vec, int index);
 
