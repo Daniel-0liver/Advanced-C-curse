@@ -2,17 +2,17 @@
 #include "float_vector.h"
 
 int main() {
-    FloatVector *vec = create(3);
+    FloatVector *vec = FloatVector_create(3);
 
-    print(vec);
+    FloatVector_print(vec);
 
-    append(vec, 0.1);
-    append(vec, 1.0);
-    append(vec, 2.0);
+    FloatVector_append(vec, 0.1);
+    FloatVector_append(vec, 1.0);
+    FloatVector_append(vec, 2.0);
 
-    print(vec);
+    FloatVector_print(vec);
 
-    destroy(&vec);
+    FloatVector_destroy(&vec);
     
     return 0;
 }

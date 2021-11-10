@@ -1,6 +1,7 @@
 #include "float_vector.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct float_vector {
     int capacity;
@@ -8,7 +9,14 @@ typedef struct float_vector {
     float *data;
 } FloatVector;
 
-FloatVector *create(int capacity) {
+
+bool _FloatVector_isFull(const FloatVector *vec) {
+    return vec->size == vec->capacity;
+}
+
+
+
+FloatVector *FloatVector_create(int capacity) {
     FloatVector *vec = (FloatVector*) calloc(1, sizeof(FloatVector));
     vec->size = 0;
     vec->capacity = capacity;
@@ -17,7 +25,7 @@ FloatVector *create(int capacity) {
     return vec;
 }
 
-void destroy(FloatVector **vec_ref) {
+void FloatVector_destroy(FloatVector **vec_ref) {
     FloatVector *aux = *vec_ref;
     
     free(aux->data);
@@ -25,26 +33,29 @@ void destroy(FloatVector **vec_ref) {
     *vec_ref = NULL;
 }
 
-int size(const FloatVector *vec) {
+int FloatVector_size(const FloatVector *vec) {
     return vec->size;
 }
 
-int capacity(const FloatVector *vec) {
+int FloatVector_capacity(const FloatVector *vec) {
     return vec->capacity;
 }
 
-float at(const FloatVector *vec, int index) {
+float FloatVector_at(const FloatVector *vec, int index) {
     if (index < 0 || index >= vec->size) {
-        fprintf(stderr, "ERROR int 'at'\n"):
-        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->)
+        fprintf(stderr, "ERROR int 'at'\n");
+        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->size - 1);
+        exit(EXIT_FAILURE);
     }
     
 }
 
-// float get(const FloatVector *vec, int index);
+float FloatVector_get(const FloatVector *vec, int index) {
+    return vec->data[index];
+}
 
-void append(FloatVector *vec, float val) {
-    if (vec->size == vec->capacity) {
+void FloatVector_append(FloatVector *vec, float val) {
+    if (_FloatVector_isFull(vec)) {
         fprintf(stderr, "ERROR in 'append'\n");
         fprintf(stderr, "Vector is FULL\n");
         exit(EXIT_FAILURE);
@@ -53,9 +64,15 @@ void append(FloatVector *vec, float val) {
     vec->data[vec->size++] = val;
 }
 
-// void set(FloatVector *vec, int index, float val);
+void FloatVector_set(FloatVector *vec, int index, float val) {
+    if (index < 0 || index >= vec->size) {
+        fprintf(stderr, "ERROR int 'set'\n");
+        fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->size - 1);
+        exit(EXIT_FAILURE);
+    }
+}
 
-void print(const FloatVector *vec) {
+void FloatVector_print(const FloatVector *vec) {
     puts("------------------------------");
     printf("Size: %d\n", vec->size);
     printf("Capacity: %d\n", vec->capacity);
