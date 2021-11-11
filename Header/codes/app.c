@@ -12,6 +12,9 @@ int main() {
 
     FloatVector_print(vec);
 
+    FloatVector_remove(vec, 0);
+    FloatVector_print(vec);
+
     FloatVector_destroy(&vec);
     
     return 0;

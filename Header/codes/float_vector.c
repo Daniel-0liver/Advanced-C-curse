@@ -64,6 +64,19 @@ void FloatVector_append(FloatVector *vec, float val) {
     vec->data[vec->size++] = val;
 }
 
+void FloatVector_remove(FloatVector *vec, int index) {
+    if (index < vec->capacity){
+        for (int i = index; i < vec->capacity ; i++) {
+			vec->data[i] = vec->data[i + 1];
+		}
+		vec->size -= 1;
+    }
+}
+
+
+// void FloatVector_erase(FloatVector *vec);
+// void FloatVector_clone(FloatVector *vec);
+
 void FloatVector_set(FloatVector *vec, int index, float val) {
     if (index < 0 || index >= vec->size) {
         fprintf(stderr, "ERROR int 'set'\n");
