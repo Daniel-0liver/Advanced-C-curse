@@ -77,7 +77,11 @@ void FloatVector_remove(FloatVector *vec, int index) {
 void FloatVector_erase(FloatVector *vec) {
 	vec->size = 0;
 }
-// void FloatVector_clone(FloatVector *vec);
+
+FloatVector *FloatVector_clone(FloatVector *vec) {
+	FloatVector *clone = vec;
+	return clone;
+}
 
 void FloatVector_set(FloatVector *vec, int index, float val) {
     if (index < 0 || index >= vec->size) {

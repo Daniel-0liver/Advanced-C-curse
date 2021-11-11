@@ -12,6 +12,10 @@ int main() {
 
     FloatVector_print(vec);
 
+    FloatVector *clone = FloatVector_clone(vec);
+
+    FloatVector_print(clone);
+
     FloatVector_remove(vec, 0);
 
     FloatVector_print(vec);
@@ -19,7 +23,7 @@ int main() {
     FloatVector_erase(vec);
 
     FloatVector_print(vec);
-    
+
     FloatVector_destroy(&vec);
     
     return 0;
