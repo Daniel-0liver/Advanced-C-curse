@@ -1,11 +1,10 @@
 all:
 	.\app.exe
 
-obj:
-	gcc -c .\float_vector.c
+ob:
+	gcc -c .\src\.\float_vector.c -I .\include -o obj\float_vector.o
 
 exe:
-	gcc .\float_vector.o .\float_vector.h app.c -o app
+	gcc obj\.\float_vector.o -I include\.\float_vector.h app.c -o app
 
 clean:
-	rm *exe *o
