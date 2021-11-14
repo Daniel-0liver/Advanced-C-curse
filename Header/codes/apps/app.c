@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include "float_vector.h"
+#include "mytime.h"
 
 int main() {
+
+    timer t1 = tic();
+
     FloatVector *vec = FloatVector_create(3);
 
     FloatVector_print(vec);
@@ -25,6 +29,9 @@ int main() {
     FloatVector_print(vec);
 
     FloatVector_destroy(&vec);
+
+    timer t2 = tac();
+    printf("Processing time: %f ms\n", comptime(t1, t2));
     
     return 0;
 }
