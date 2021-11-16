@@ -41,7 +41,7 @@ int FloatVector_capacity(const FloatVector *vec) {
     return vec->capacity;
 }
 
-float FloatVector_at(const FloatVector *vec, int index) {
+void FloatVector_at(const FloatVector *vec, int index) {
     if (index < 0 || index >= vec->size) {
         fprintf(stderr, "ERROR int 'at'\n");
         fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->size - 1);
@@ -83,7 +83,7 @@ FloatVector *FloatVector_clone(FloatVector *vec) {
 	return clone;
 }
 
-void FloatVector_set(FloatVector *vec, int index, float val) {
+void FloatVector_set(FloatVector *vec, int index) {
     if (index < 0 || index >= vec->size) {
         fprintf(stderr, "ERROR int 'set'\n");
         fprintf(stderr, "Index [%d] is out of bounds: [0, %d]\n", index, vec->size - 1);
