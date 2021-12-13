@@ -64,7 +64,6 @@ void destroy_vector_book(Book **vec, unsigned int size) {
     }
     free(vec);
     *vec = NULL;
-
 }
 
 bool is_the_same_title(const Book *book_1, const Book *book_2) {

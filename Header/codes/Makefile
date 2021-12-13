@@ -1,23 +1,33 @@
 APPS = ./apps
 BIN = ./bin
+LIB = ./lib
+LIBS = -lm -led -L $(LIB)
 SRC = ./src
 INCLUDE = ./include
 OBJ = ./obj
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -o3 -Wall -Wextra -Werror
 CC = gcc
 
 
 all: libed myapps
 	
-libed:
-	$(CC) $(FLAGS) -c $(SRC)/float_vector.c -I $(INCLUDE) -o $(OBJ)/float_vector.o
-	$(CC) $(FLAGS) -c $(SRC)/mytime.c -I $(INCLUDE) -o $(OBJ)/mytime.o
+libed: $(OBJ)/float_vector.o $(OBJ)/mytime.o
+	ar -rcs $(LIB)/libed.a $(OBJ)/*.o
 
-myapps:
-	$(CC) $(FLAGS) $(APPS)/app.c $(OBJ)/*.o -I $(INCLUDE)/ -o $(BIN)/app
+myapps: clean_apps $(BIN)/test_float_vector
+
+
+$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
+	$(CC) $(FLAGS) -c $< -I $(INCLUDE) -o $@
+
+$(BIN)/%: $(APPS)/%.c
+	$(CC) $(FLAGS) $< $(LIBS) -I $(INCLUDE) -o $@
 
 run:
-	bin//app
+	$(BIN)/test_float_vector
 
 clean:
-	rm $(OBJ)/* $(BIN)/*
+	@rm -rf $(OBJ)/* $(BIN)/* $(LIB)/*
+
+clean_apps:
+	@rm -rf $(BIN)/*
