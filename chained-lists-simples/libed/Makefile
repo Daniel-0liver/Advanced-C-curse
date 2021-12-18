@@ -15,7 +15,8 @@ libed: $(OBJ)/float_vector.o $(OBJ)/mytime.o \
 		$(OBJ)/linked_list.o 
 	ar -rcs $(LIB)/libed.a $(OBJ)/*.o
 
-myapps: clean_apps $(BIN)/test_float_vector
+myapps: clean_apps $(BIN)/test_float_vector \
+	$(BIN)/test_linked_list
 
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
