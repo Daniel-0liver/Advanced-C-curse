@@ -96,6 +96,10 @@ void LinkedList_remove(LinkedList *L, int val) {
 		if (L->begin->val == val)
 		{
 			SNode *pos = L->begin;
+			if (L->end == L->begin)
+			{
+				L->end = NULL;
+			}
 			L->begin = L->begin->next;
 			free(pos);
 		}

@@ -16,14 +16,14 @@ int main() {
 
 	LinkedList_add_last(L, 10);
 	LinkedList_print(L);
-	LinkedList_add_last(L, 20);
-	LinkedList_print(L);
-	LinkedList_add_last(L, 30);
-	LinkedList_print(L);
-	LinkedList_add_last(L, 40);
-	LinkedList_print(L);
-	LinkedList_add_last(L, 50);
-	LinkedList_print(L);
+	// LinkedList_add_last(L, 20);
+	// LinkedList_print(L);
+	// LinkedList_add_last(L, 30);
+	// LinkedList_print(L);
+	// LinkedList_add_last(L, 40);
+	// LinkedList_print(L);
+	// LinkedList_add_last(L, 50);
+	// LinkedList_print(L);
 
 	LinkedList_remove(L, 10);
 	LinkedList_print(L);
