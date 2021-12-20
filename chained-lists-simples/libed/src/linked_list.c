@@ -89,3 +89,15 @@ void LinkedList_print(const LinkedList *L) {
 	}
 	puts("NULL");
 }
+
+void LinkedList_remove(LinkedList *L, int val) {
+	if (!LinkedList_is_empty(L))
+	{
+		if (L->begin->val == val)
+		{
+			SNode *pos = L->begin;
+			L->begin = L->begin->next;
+			free(pos);
+		}
+	}
+}
