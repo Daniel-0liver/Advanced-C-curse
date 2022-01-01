@@ -10,7 +10,9 @@ int main() {
     LinkedList_add_last(L, 7);
     LinkedList_print(L);
 
-	printf("Size of the list is: %ld", LinkedList_size(L));
+	printf("First val: %d\n", LinkedList_first_val(L));
+	printf("Last val: %d\n", LinkedList_last_val(L));
+	printf("Get val: %d\n", LinkedList_get_val(L, 6));
 
 	LinkedList_destroy(&L);
 	return (0);
