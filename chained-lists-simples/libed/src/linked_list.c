@@ -30,8 +30,24 @@ LinkedList *LinkedList_create() {
 	return (L);
 }
 
+void LinkedList_destroy(LinkedList **L_ref) {
+	LinkedList *L = *L_ref;
+	
+	SNode *p = L->begin;
+	SNode *aux = NULL;
+	while (p){
+		aux = p;
+		p = p->next;
+		free(aux);
+	}
+	free(L);
+
+	*L_ref = NULL;
+}
+
+
 bool LinkedList_is_empty(const LinkedList *L) {
-	return (!(L->begin && L->end));
+	return ((L->begin == NULL && L->end == NULL));
 }
 
 void LinkedList_add_first(LinkedList *L, int val) {
@@ -88,6 +104,10 @@ void LinkedList_print(const LinkedList *L) {
 		p = p->next;
 	}
 	puts("NULL");
+	if (L->end)
+		printf("L -> end = %d\n\n", L->end->val);
+	else
+		printf("L -> end = NULL\n");
 }
 
 void LinkedList_remove(LinkedList *L, int val) {
@@ -97,11 +117,39 @@ void LinkedList_remove(LinkedList *L, int val) {
 		{
 			SNode *pos = L->begin;
 			if (L->end == L->begin)
-			{
 				L->end = NULL;
-			}
 			L->begin = L->begin->next;
 			free(pos);
 		}
+		else
+		{
+			SNode *pos = L->begin->next;
+			SNode *prev = L->begin;
+			while (pos && pos->val != val)
+			{
+				pos = pos->next;
+				prev = prev->next;
+			}
+			if (pos)
+			{
+				prev->next = pos->next;
+				if (!pos->next)
+					L->end = prev;
+				free(pos);
+			}	
+		}		
 	}
+}
+
+size_t	LinkedList_size(const LinkedList *L) {
+	size_t size = 0;
+	SNode *p = L->begin;
+	while (p) {
+		size++;
+		p = p->next;
+	}
+	// The same but using for
+	// for (SNode *p = L->begin; p; p = p->next)
+	// 	size++;
+	return (size);
 }

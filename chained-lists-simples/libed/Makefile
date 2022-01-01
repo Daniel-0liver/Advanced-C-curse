@@ -16,7 +16,8 @@ libed: $(OBJ)/float_vector.o $(OBJ)/mytime.o \
 	ar -rcs $(LIB)/libed.a $(OBJ)/*.o
 
 myapps: clean_apps $(BIN)/test_float_vector \
-	$(BIN)/test_linked_list
+	$(BIN)/test_linked_list \
+	$(BIN)/test_linked_list_exercises
 
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
@@ -26,7 +27,7 @@ $(BIN)/%: $(APPS)/%.c
 	$(CC) $(FLAGS) $< $(LIBS) -I $(INCLUDE) -o $@
 
 run:
-	$(BIN)/test_float_vector
+	$(BIN)/test_linked_list_exercises
 
 clean:
 	@rm -rf $(OBJ)/* $(BIN)/* $(LIB)/*

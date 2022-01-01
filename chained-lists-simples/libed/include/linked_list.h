@@ -2,6 +2,8 @@
 # define LINKED_LIST_H
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <stddef.h>
 
 typedef struct _snode SNode;
 typedef struct _linked_list LinkedList;
@@ -10,6 +12,9 @@ SNode *SNode_create(int val);
 
 // Creat a list with calloc.
 LinkedList *LinkedList_create();
+
+// Destroy all list
+void LinkedList_destroy(LinkedList **L_ref);
 
 // Verify is the list is empty.
 bool LinkedList_is_empty(const LinkedList *L);
@@ -29,5 +34,7 @@ void LinkedList_print(const LinkedList *L);
 // Remove the first element if it is equal val.
 void LinkedList_remove(LinkedList *L, int val);
 
+// Show the size of the List
+size_t	LinkedList_size(const LinkedList *L);
 
 #endif
